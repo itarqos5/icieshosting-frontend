@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Select Plan - IceHosting</title>
+    <link rel="stylesheet" href="../../../styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Confirm Your Details</h1>
+        <div class="plan-selection">
+            <label>RAM:</label>
+            <input type="range" id="ram" min="1" max="32" step="1" value="1" required>
+            <span id="ram-value">1GB</span><br><br>
+
+            <label>Processor:</label>
+            <select id="processor" required>
+                <option value="AMD Epyc 7543">AMD Epyc 7543 (EU Region)</option>
+                <option value="RYZEN 9 7900">RYZEN 9 7900 (EU Region)</option>
+                <option value="Ryzen 7 3700x">Ryzen 7 3700x</option>
+                <option value="Ryzen 7 5700G">Ryzen 7 5700G</option>
+            </select><br><br>
+
+            <label>Platform:</label>
+            <select id="platform" required>
+                <option value="VPS">VPS</option>
+                <option value="Minecraft">Minecraft</option>
+                <option value="CS-GO">CS-GO</option>
+                <option value="FiveM">FiveM</option>
+                <option value="Ark">Ark</option>
+                <option value="Rust">Rust</option>
+            </select><br><br>
+
+            <input type="email" id="user-email" placeholder="Email" required><br><br>
+            <input type="text" id="discord-username" placeholder="Discord Username" required><br><br>
+            <input type="password" id="password" placeholder="Password" required><br><br>
+            <input type="text" id="first-name" placeholder="Your first name" required><br><br>
+            <input type="text" id="last-name" placeholder="Your last name" required><br><br>
+
+            <button class="btn" id="purchase-btn" onclick="createUser(); sendPurchaseEmbed(); navigateTo('../success/index.html', true, 14); alert('Redirecting you to our login page.. Please wait..');">Submit</button>
+        </div>
+    </div>
+
+    <script src="done.js"></script>
+</body>
+</html>
