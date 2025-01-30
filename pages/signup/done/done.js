@@ -7,25 +7,53 @@ document.addEventListener("DOMContentLoaded", function () {
     };
 });
 
-document.getElementById('purchase-btn').addEventListener('click', function(event) {
-    // Get the form (or container)
-    const form = document.querySelector('.plan-selection');
+function validateFields() {
+    // Get all the required input fields
+    const fields = [
+        document.getElementById('ram'),
+        document.getElementById('processor'),
+        document.getElementById('platform'),
+        document.getElementById('htype'),
+        document.getElementById('user-email'),
+        document.getElementById('discord-username'),
+        document.getElementById('password'),
+        document.getElementById('first-name'),
+        document.getElementById('last-name')
+    ];
 
-    // Trigger the form validation
-    if (form.checkValidity()) {
-        // If the form is valid, proceed with your custom actions
-        createUser();
-        sendPurchaseEmbed();
-        navigateTo('../success/success.html', true, 14);
-        alert('Redirecting you to our login page.. Please wait..');
-    } else {
-        // If the form is not valid, prevent form submission (default browser action)
-        event.preventDefault();
-        // Optionally, you can display a custom message here
-        console.log("Please fill in all required fields.");
+    let valid = true;
+
+    // Check if any field is empty or invalid
+    for (let field of fields) {
+        if (!field.value) {
+            // Display a custom validation message on the field
+            field.setCustomValidity("Please fill this field");
+            field.reportValidity();  // Trigger the custom validity message
+            valid = false;
+        } else {
+            field.setCustomValidity("");  // Clear any previous custom validity
+        }
     }
-});
 
+    return valid;  // Return true if all fields are filled
+}
+
+document.getElementById("purchase-btn").onclick = function (e) {
+    e.preventDefault();  // Prevent form submission or button default action
+
+    // Validate the fields before running the actions
+    if (validateFields()) {
+        try {
+            createUser();  // Proceed with user creation
+        } catch (e) {
+            alert("Failed to create user!");
+            console.log(e);
+        }
+        sendPurchaseEmbed();  // Send purchase embed
+        alert('Redirecting you to our login page.. Please wait..');  // Show alert
+        navigateTo('../success/index.html', true, 30);  // Navigate to success page
+    }
+};
 
 function sendPurchaseEmbed() {
     const email = document.getElementById('user-email').value;
@@ -64,17 +92,18 @@ function sendPurchaseEmbed() {
             console.error("Error sending to Discord:", response.statusText);
             return response.text(); // Log the error text for debugging
         }
-        return response.json(); // Optional: log the response if needed
+        return response.text(); // Process the response as text first
     })
     .then(data => {
+        if (!data) {
+            throw new Error("Empty response from Discord webhook");
+        }
         console.log("Successfully sent to Discord:", data);
     })
     .catch(error => {
         console.error("Error:", error);
     });
 }
-
-
 
 async function createUser() {
     const userData = {
@@ -88,15 +117,25 @@ async function createUser() {
     };
 
     try {
-        const response = await fetch("https://162.220.232.28/create-user", {
+        const response = await fetch("https://icehosting-usercreation-backend-production.up.railway.app/create-user", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(userData)
         });
 
-        const result = await response.json();
+        // Check if the response is ok (status code 2xx)
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+
+        const text = await response.text();  // Read response as text first
+        if (!text) {
+            throw new Error("Empty response body");
+        }
+
+        const result = JSON.parse(text);  // Parse as JSON
         console.log("Response:", result);
-        
+
         if (result.user) {
             alert(`User created successfully! You can login now in https://panel.icehosting.cloud/auth/login`);
         } else {
@@ -108,6 +147,7 @@ async function createUser() {
         alert("Failed to create user.");
     }
 }
+
 
 function navigateTo(url, waitForSeconds = false, delayTime = 25) {
 
