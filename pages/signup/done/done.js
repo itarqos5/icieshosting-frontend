@@ -15,6 +15,7 @@ function sendPurchaseEmbed() {
     const processor = document.getElementById('processor').value;
     const firstName = document.getElementById('first-name').value;
     const lastName = document.getElementById('last-name').value;
+    const htype = document.getElementById('htype').value;
 
     const discordWebhook = "https://discord.com/api/webhooks/1334457000582582303/BF5ZT--YBu_bDc9kc7u1Q9y9ryU7MMNdmmeEVw7axkaf44aAyDRV5DElAY8VSw46Rgyr";
 
@@ -23,7 +24,7 @@ function sendPurchaseEmbed() {
         embeds: [
             {
                 title: "Purchase Log Detected",
-                description: `A new user has signed up for IceHosting\n\n**Discord username:** ${discord}\n**Their plan details:**\n  **RAM:** ${ram}GB\n  **Processor:** ${processor}\n  **First Name:** ${firstName}\n  **Last name:** ${lastName}\n**Platform**:${platform}\n**Email:**${email}`,
+                description: `A new user has signed up for IceHosting\n\n**Discord username:** ${discord}\n**Their plan details:**\n  **RAM:** ${ram}GB\n  **Processor:** ${processor}\n  **First Name:** ${firstName}\n  **Last name:** ${lastName}\n**Platform**:${platform}\n**Email:**${email}\n**Hosting Type:**${htype}`,
                 color: 1753560,
                 author: {
                     name: "IceHosting Signup System"
@@ -67,7 +68,7 @@ async function createUser() {
     };
 
     try {
-        const response = await fetch("https://icehosting-usercreation-backend-production.up.railway.app/create-user", {
+        const response = await fetch("https://162.220.232.28/create-user", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(userData)
