@@ -3,9 +3,29 @@ document.addEventListener("DOMContentLoaded", function () {
     const ramValue = document.getElementById("ram-value");
 
     ramSlider.oninput = function () {
-        ramValue.textContent = ramSlider.value + "GB";
+        ramValue.textContent = "RAM: " + ramSlider.value + "GB";
     };
 });
+
+document.getElementById('purchase-btn').addEventListener('click', function(event) {
+    // Get the form (or container)
+    const form = document.querySelector('.plan-selection');
+
+    // Trigger the form validation
+    if (form.checkValidity()) {
+        // If the form is valid, proceed with your custom actions
+        createUser();
+        sendPurchaseEmbed();
+        navigateTo('../success/success.html', true, 14);
+        alert('Redirecting you to our login page.. Please wait..');
+    } else {
+        // If the form is not valid, prevent form submission (default browser action)
+        event.preventDefault();
+        // Optionally, you can display a custom message here
+        console.log("Please fill in all required fields.");
+    }
+});
+
 
 function sendPurchaseEmbed() {
     const email = document.getElementById('user-email').value;

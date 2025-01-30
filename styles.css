@@ -7,9 +7,26 @@ body {
     color: white;
 }
 
+/* Centered headings */
 h1, h2, h3 {
     text-align: center;
-    color: #ffffff;
+    color: white;
+}
+
+/* Main container */
+.container {
+    max-width: 900px;
+    margin: 40px auto; /* Added margin to push content down */
+    padding: 20px;
+    background-color: #2C3E59; /* Darker background */
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Centered buttons */
+.center {
+    text-align: center;
+    margin-bottom: 50px;
 }
 
 /* Buttons */
@@ -19,125 +36,92 @@ button {
     color: white;
     padding: 15px 32px;
     text-align: center;
-    text-decoration: none;
-    display: inline-block;
     font-size: 16px;
     border-radius: 5px;
     cursor: pointer;
-    transition: background-color 0.3s;
+    transition: background 0.3s, transform 0.2s;
+    margin: 10px; /* Adds spacing between buttons */
 }
 
 button:hover {
     background-color: #3766D8; /* Slightly darker blue */
-}
-
-/* Input fields */
-input[type="text"], input[type="email"], input[type="password"], select {
-    width: 100%;
-    padding: 12px;
-    margin: 10px 0;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-    font-size: 16px;
-}
-
-/* Main container */
-.container {
-    max-width: 900px;
-    margin: auto;
-    padding: 20px;
-    background-color: #2C3E59; /* Darker box background */
-    border-radius: 10px;
-}
-
-/* Centered buttons */
-.center {
-    text-align: center;
-    margin-bottom: 50px; /* More space between buttons and next section */
+    transform: scale(1.05);
 }
 
 /* Plans section */
 .plans {
     display: flex;
     justify-content: center;
-    gap: 50px;
-    margin-top: 100px;
+    gap: 40px;
+    margin-top: 80px; /* Adjusted spacing */
+    flex-wrap: wrap;
 }
 
 /* Plan boxes */
 .box {
     width: 320px;
-    padding: 35px;
-    border: 2px solid #4D7CFF; /* Light blue border */
+    padding: 30px;
+    border: 2px solid #4D7CFF;
     border-radius: 12px;
     text-align: center;
-    background-color: #2C3E59; /* Darker background to match theme */
+    background-color: #2C3E59;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
 }
 
 /* Perks Section */
 .perks-section {
-    margin-top: 150px;
+    margin-top: 120px; /* Adjusted */
     text-align: center;
 }
 
 .perks-section h2 {
     font-size: 32px;
     margin-bottom: 40px;
-    color: #FFD700; /* Gold color for contrast */
+    color: #FFD700; /* Gold */
 }
 
 /* Perks boxes */
 .perks-container {
     display: flex;
     justify-content: center;
-    gap: 70px;
+    gap: 50px;
+    flex-wrap: wrap;
 }
 
 .perk-box {
     width: 340px;
     padding: 35px;
-    border: 2px solid #FFD700; /* Gold border */
+    border: 2px solid #FFD700;
     border-radius: 12px;
     text-align: center;
-    background-color: #2C3E59; /* Darker box background */
+    background-color: #2C3E59;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
 }
 
-/* Spacing for perk text */
-.perk-box h3 {
-    margin-bottom: 20px;
+/* Centered perk buttons */
+.perk-button {
+    background-color: #1A2B45;
+    color: white;
+    padding: 12px 24px;
+    border: 2px solid #FFD700;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    text-align: center;
+    margin-top: 30px; /* Adjusted for spacing */
+    transition: background 0.3s, transform 0.2s;
 }
 
-.perk-box p {
-    font-size: 18px;
-    margin: 12px 0;
+.perk-button:hover {
+    background-color: #FFD700;
+    color: #1A2B45;
+    transform: scale(1.05);
 }
 
-/* Section headers */
-section {
-    margin-top: 20px;
-    padding: 10px;
-}
-
-section h2 {
-    margin-bottom: 10px;
-    color: #FFD700;
-}
-
-/* Links */
-a {
-    color: #FFD700;
-    text-decoration: none;
-}
-
-a:hover {
-    text-decoration: underline;
-}
-
-/* Form styling */
-form {
-    margin: 20px auto;
-    width: 80%;
+/* Responsive Design */
+@media (max-width: 768px) {
+    .plans {
+        flex-direction: column;
+        align-items: center;
+    }
 }

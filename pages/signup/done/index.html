@@ -4,15 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Select Plan - IceHosting</title>
-    <link rel="stylesheet" href="../../../styles.css">
+    <link rel="stylesheet" href="done.css">
+    <meta property="og:title" content="Ice Hosting">
+    <meta property="og:description" content="The best hosting provider ever!">
+    <meta property="og:url" content="https://icehosting-signup.vercel.app/">
+    <meta name="twitter:card" content="summary_large_image">
 </head>
 <body>
     <div class="container">
         <h1>Confirm Your Details</h1>
+        <form>
         <div class="plan-selection">
             <label>RAM:</label>
             <input type="range" id="ram" min="1" max="32" step="1" value="1" required>
-            <span id="ram-value">1GB</span><br><br>
+            <span id="ram-value">RAM: 1GB</span><br><br>
 
             <label>Processor:</label>
             <select id="processor" required>
@@ -39,13 +44,19 @@
                 <option value="Extreme">Extreme Minecraft Hosting</option>
             </select>
 
+            <label>Email:</label>
             <input type="email" id="user-email" placeholder="Email" required><br><br>
+            <label>Discord username:</label>
             <input type="text" id="discord-username" placeholder="Discord Username" required><br><br>
+            <label>Password:</label>
             <input type="password" id="password" placeholder="Password" required><br><br>
+            <label>First name:</label>
             <input type="text" id="first-name" placeholder="Your first name" required><br><br>
+            <label>Last name:</label>
             <input type="text" id="last-name" placeholder="Your last name" required><br><br>
 
-            <button class="btn" id="purchase-btn" onclick="createUser(); sendPurchaseEmbed(); navigateTo('../success/success.html', true, 14); alert('Redirecting you to our login page.. Please wait..');">Submit</button>
+            <button type="submit" class="btn" id="purchase-btn">Submit</button>
+        </form>
         </div>
     </div>
 

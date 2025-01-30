@@ -5,6 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>IceHosting Signup</title>
     <link rel="stylesheet" href="styles.css">
+    <meta property="og:title" content="Ice Hosting">
+    <meta property="og:description" content="The best hosting provider ever!">
+    <meta property="og:url" content="https://icehosting-signup.vercel.app/">
+    <meta name="twitter:card" content="summary_large_image">
 </head>
 <body>
     <div class="container">
@@ -20,43 +24,19 @@
         <div class="plans">
             <div class="box">
                 <h2>Budget Minecraft Hosting</h2>
-                <button onclick="document.getElementById('perks').scrollIntoView({ behavior: 'smooth' })">View Plans</button>
+                <button onclick="navigateTo('./perks/index.html')">View Plans</button>
             </div>
             <div class="box">
                 <h2>Premium Minecraft Hosting</h2>
-                <button onclick="document.getElementById('perks').scrollIntoView({ behavior: 'smooth' })">View Plans</button>
+                <button onclick="navigateTo('./perks/index.html')">View Plans</button>
             </div>
             <div class="box">
                 <h2>Extreme Minecraft Hosting</h2>
-                <button onclick="document.getElementById('perks').scrollIntoView({ behavior: 'smooth' })">View Plans</button>
-            </div>
-        </div>
-
-        <div id="perks" class="perks-section">
-            <h2>Perks</h2>
-            <div class="perks-container">
-                <div class="perk-box">
-                    <h3>Budget Minecraft Hosting</h3>
-                    <p>✅ Cheap</p>
-                    <p>✅ 1 Database</p>
-                    <p>✅ 20 players (Recommended, but unlimited)</p>
-                </div>
-                <div class="perk-box">
-                    <h3>Premium Minecraft Hosting</h3>
-                    <p>✅ 3 Databases</p>
-                    <p>✅ 24/7 Support</p>
-                    <p>✅ yourserver.icehosting.cloud domain</p>
-                    <p>✅ 40 players (Recommended, but unlimited)/p>
-                </div>
-                <div class="perk-box">
-                    <h3>Extreme Minecraft Hosting</h3>
-                    <p>✅ 5 Databases</p>
-                    <p>✅ 24/7 Support</p>
-                    <p>✅ Custom domain + yourserver.icehosting.cloud</p>
-                    <p>✅ 80+ players</p>
-                </div>
+                <button onclick="navigateTo('./perks/index.html')">View Plans</button>
             </div>
         </div>
     </div>
+
+    <script src="pages/signup/done/done.js"></script>
 </body>
 </html>

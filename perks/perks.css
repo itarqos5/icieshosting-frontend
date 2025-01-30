@@ -1,0 +1,110 @@
+/* Global styling */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #1A2B45; /* Dark blue background */
+    color: white;
+    text-align: center;
+}
+
+/* Button container */
+.button-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 50px; /* Moves the buttons down */
+}
+
+/* Centered perk buttons */
+.perk-button {
+    background-color: #1A2B45; /* Match background */
+    color: white;
+    padding: 12px 24px;
+    border: 2px solid #FFD700; /* Gold border */
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+.perk-button:hover {
+    background-color: #FFD700; /* Gold */
+    color: #1A2B45; /* Dark blue */
+    transform: scale(1.1); /* Slight zoom effect */
+}
+
+/* Perks Section */
+.perks-section {
+    margin-top: 100px; /* Moves perks down */
+    text-align: center;
+}
+
+/* Perks Title */
+.perks-section h2 {
+    font-size: 32px;
+    margin-bottom: 40px;
+    color: #FFD700;
+    text-transform: uppercase;
+}
+
+/* Perks Container */
+.perks-container {
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+    flex-wrap: wrap;
+    padding-top: 20px;
+}
+
+/* Perk Box */
+.perk-box {
+    width: 340px;
+    padding: 35px;
+    border: 2px solid #FFD700;
+    border-radius: 12px;
+    text-align: center;
+    background-color: #2C3E59;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease-in-out;
+}
+
+/* Hover Effect for Perk Box */
+.perk-box:hover {
+    transform: translateY(-5px); /* Lift effect */
+    box-shadow: 0px 6px 15px rgba(255, 215, 0, 0.5); /* Gold glow */
+}
+
+/* Spacing for Perk Text */
+.perk-box h3 {
+    margin-bottom: 20px;
+}
+
+.perk-box p {
+    font-size: 18px;
+    margin: 12px 0;
+}
+
+/* Links */
+a {
+    color: #FFD700;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .button-container {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+    
+    .perks-container {
+        flex-direction: column;
+        align-items: center;
+    }
+}

@@ -4,20 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sign Up - IceHosting</title>
-    <link rel="stylesheet" href="../../styles.css">
+    <link rel="stylesheet" href="signup.css">
+    <meta property="og:title" content="Ice Hosting">
+    <meta property="og:description" content="The best hosting provider ever!">
+    <meta property="og:url" content="https://icehosting-signup.vercel.app/">
+    <meta name="twitter:card" content="summary_large_image">
 </head>
 <body>
     <div class="container">
         <h1>Create an Account</h1>
-            <section>
-                <label for="email">Email Address</label>
-                <input type="email" id="email" name="email" required>
+        <form action="./done/index.html" method="GET">  <!-- Form added -->
+            <label for="email">Email Address</label>
+            <input type="email" id="email" name="email" required>
 
-                <label for="password">Password</label>
-                <input type="password" id="password" name="password" required>
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" required>
 
-                <button type="submit" onclick="window.location.href='./done/confirmation.html'">Sign Up</button>
-            </section>
+            <button type="submit">Sign Up</button>  <!-- No more onclick -->
         </form>
     </div>
 </body>
