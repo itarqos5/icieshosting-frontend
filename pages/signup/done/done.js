@@ -1,11 +1,45 @@
 document.addEventListener("DOMContentLoaded", function () {
     const ramSlider = document.getElementById("ram");
     const ramValue = document.getElementById("ram-value");
+    const platformSelect = document.getElementById("platform");
 
+    // Update RAM value based on slider input
     ramSlider.oninput = function () {
-        ramValue.textContent = "RAM: " + ramSlider.value + "GB";
+        let ramText = "RAM: " + ramSlider.value + "GB";
+
+        // If the platform is VPS and RAM is above 32GB, set it to "Unlimited"
+        if (platformSelect.value === "VPS" && ramSlider.value > 63) {
+            ramText = "RAM: Unlimited";
+        }
+
+        ramValue.textContent = ramText;
     };
 });
+
+document.addEventListener("DOMContentLoaded", function () {
+    const platformSelect = document.getElementById("platform");
+    const plangSelect = document.getElementById("plang");
+    const plangLabel = document.getElementById("plang-label");
+
+    // Function to show/hide the Programming Language label and dropdown
+    function toggleProgrammingLanguage() {
+        if (platformSelect.value === "Discord-Bot") {
+            plangSelect.style.display = "inline";  // Show the Programming Language dropdown
+            plangLabel.style.display = "inline";  // Show the Programming Language label
+        } else {
+            plangSelect.style.display = "none";  // Hide the Programming Language dropdown
+            plangLabel.style.display = "none";  // Hide the Programming Language label
+        }
+    }
+
+    // Listen for changes in the Platform dropdown
+    platformSelect.addEventListener("change", toggleProgrammingLanguage);
+
+    // Initial check when the page loads
+    toggleProgrammingLanguage();
+});
+
+
 
 function validateFields() {
     // Get all the required input fields
@@ -18,7 +52,8 @@ function validateFields() {
         document.getElementById('discord-username'),
         document.getElementById('password'),
         document.getElementById('first-name'),
-        document.getElementById('last-name')
+        document.getElementById('last-name'),
+        document.getElementById('storage')
     ];
 
     let valid = true;
@@ -55,6 +90,37 @@ document.getElementById("purchase-btn").onclick = function (e) {
     }
 };
 
+async function checkDiscordUser() {
+    const usernameInput = document.getElementById("discord-username");
+    const username = usernameInput.value.trim();
+
+    if (!username) {
+        usernameInput.setCustomValidity("This user does not exist");
+        usernameInput.reportValidity();
+        return;
+    }
+
+    // Simulating a username check (Replace with an actual API call)
+    const fakeDatabase = {
+        "testuser#1234": "123456789012345678",
+        "example#5678": "987654321098765432"
+    };
+
+    if (fakeDatabase[username]) {
+        usernameInput.setCustomValidity("");
+        window.userId = fakeDatabase[username]; // Save to a global variable
+        console.log("User ID saved:", window.userId);
+    } else {
+        usernameInput.setCustomValidity("This user does not exist");
+        usernameInput.reportValidity();
+    }
+}
+
+// Run the check when the field loses focus
+document.getElementById("discord-username").addEventListener("blur", checkDiscordUser);
+
+
+
 function sendPurchaseEmbed() {
     const email = document.getElementById('user-email').value;
     const discord = document.getElementById('discord-username').value;
@@ -64,6 +130,9 @@ function sendPurchaseEmbed() {
     const firstName = document.getElementById('first-name').value;
     const lastName = document.getElementById('last-name').value;
     const htype = document.getElementById('htype').value;
+    const storage = document.getElementById('storage').value;
+    const storage_type = document.getElementById('storage-type').value;
+    const bot_programming_lang = document.getElementById('plang').value || "Unprovided";
 
     const discordWebhook = "https://discord.com/api/webhooks/1334457000582582303/BF5ZT--YBu_bDc9kc7u1Q9y9ryU7MMNdmmeEVw7axkaf44aAyDRV5DElAY8VSw46Rgyr";
 
@@ -72,7 +141,7 @@ function sendPurchaseEmbed() {
         embeds: [
             {
                 title: "Purchase Log Detected",
-                description: `A new user has signed up for IceHosting\n\n**Discord username:** ${discord}\n**Their plan details:**\n  **RAM:** ${ram}GB\n  **Processor:** ${processor}\n  **First Name:** ${firstName}\n  **Last name:** ${lastName}\n**Platform**:${platform}\n**Email:**${email}\n**Hosting Type:**${htype}`,
+                description: `A new user has signed up for IceHosting\n\n**Discord username:** ${discord}\n**Their plan details:**\n  **RAM:** ${ram}GB\n  **Processor:** ${processor}\n  **First Name:** ${firstName}\n  **Last name:** ${lastName}\n**Platform**:${platform}\n**Email:**${email}\n**Hosting Type:**${htype}\n**Storage Amount:**${storage}\n**Storage Type:**${storage_type}\n **Discord bot programming language:**${bot_programming_lang}`,
                 color: 1753560,
                 author: {
                     name: "IceHosting Signup System"

@@ -7,8 +7,9 @@ body {
     color: white;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start; /* Align to the top */
     height: 100vh;
+    overflow-y: auto; /* Allow vertical scrolling if content overflows */
 }
 
 /* Main Container */
@@ -19,6 +20,11 @@ body {
     border-radius: 12px;
     text-align: center;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+    max-height: 90vh; /* Make sure the container doesn’t grow too tall */
+    overflow-y: auto; /* Enable scrolling within the container if necessary */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
 }
 
 /* Headings */
@@ -48,7 +54,6 @@ input, select {
     outline: none;
     margin-bottom: 15px;
 }
-
 
 input:focus, select:focus {
     border-color: #FFD700; /* Gold highlight */
