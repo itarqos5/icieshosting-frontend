@@ -73,54 +73,72 @@ function validateFields() {
     return valid;  // Return true if all fields are filled
 }
 
-document.getElementById("purchase-btn").onclick = function (e) {
+document.getElementById("purchase-btn").onclick = async function (e) {
     e.preventDefault();  // Prevent form submission or button default action
 
     // Validate the fields before running the actions
-    if (validateFields()) {
+    if (!validateFields()) return;
+
+    const promoInput = document.getElementById("promo");
+    const promoCode = promoInput.value.trim();
+
+    if (promoCode) {
         try {
-            createUser();  // Proceed with user creation
-        } catch (e) {
-            alert("Failed to create user!");
-            console.log(e);
+            const response = await fetch("https://icehosting-usercreation-backend-production.up.railway.app/promo");
+            const promoData = await response.json();
+
+            if (promoData[promoCode]) {
+                // Valid promo code, show success message
+                showPromoSuccess(promoData[promoCode]);
+
+                // Prevent multiple promo codes from being applied
+                promoInput.readOnly = true;  
+            } else {
+                // Invalid promo code, show error like required field validation
+                promoInput.setCustomValidity("This promocode is incorrect");
+                promoInput.reportValidity();
+                return;
+            }
+        } catch (error) {
+            console.error("Error fetching promo data:", error);
+            alert("Failed to validate promo code. Try again later.");
+            return;
         }
-        sendPurchaseEmbed();  // Send purchase embed
-        alert('Redirecting you to our login page.. Please wait..');  // Show alert
-        navigateTo('../success/index.html', true, 30);  // Navigate to success page
     }
+
+    try {
+        createUser();  // Proceed with user creation
+    } catch (e) {
+        alert("Failed to create user!");
+        console.log(e);
+    }
+    
+    sendPurchaseEmbed();  // Send purchase embed
+    alert('Redirecting you to our login page.. Please wait..');  // Show alert
+    navigateTo('../success/index.html', true, 30);  // Navigate to success page
 };
 
-async function checkDiscordUser() {
-    const usernameInput = document.getElementById("discord-username");
-    const username = usernameInput.value.trim();
+// Function to show promo success message
+function showPromoSuccess(discount) {
+    const messageBox = document.createElement("div");
+    messageBox.textContent = `You have successfully assigned a ${discount}% off promo code!`;
+    messageBox.style.position = "fixed";
+    messageBox.style.bottom = "20px";
+    messageBox.style.left = "20px";
+    messageBox.style.background = "#4CAF50";
+    messageBox.style.color = "white";
+    messageBox.style.padding = "10px 20px";
+    messageBox.style.borderRadius = "5px";
+    messageBox.style.fontSize = "14px";
+    messageBox.style.boxShadow = "0px 4px 6px rgba(0,0,0,0.1)";
+    messageBox.style.zIndex = "1000";
+    
+    document.body.appendChild(messageBox);
 
-    if (!username) {
-        usernameInput.setCustomValidity("This user does not exist");
-        usernameInput.reportValidity();
-        return;
-    }
-
-    // Simulating a username check (Replace with an actual API call)
-    const fakeDatabase = {
-        "testuser#1234": "123456789012345678",
-        "example#5678": "987654321098765432"
-    };
-
-    if (fakeDatabase[username]) {
-        usernameInput.setCustomValidity("");
-        window.userId = fakeDatabase[username]; // Save to a global variable
-        console.log("User ID saved:", window.userId);
-    } else {
-        usernameInput.setCustomValidity("This user does not exist");
-        usernameInput.reportValidity();
-    }
+    setTimeout(() => {
+        messageBox.remove();
+    }, 5000);
 }
-
-// Run the check when the field loses focus
-document.getElementById("discord-username").addEventListener("blur", checkDiscordUser);
-
-
-
 function sendPurchaseEmbed() {
     const email = document.getElementById('user-email').value;
     const discord = document.getElementById('discord-username').value;
@@ -133,6 +151,7 @@ function sendPurchaseEmbed() {
     const storage = document.getElementById('storage').value;
     const storage_type = document.getElementById('storage-type').value;
     const bot_programming_lang = document.getElementById('plang').value || "Unprovided";
+    const promocode = document.getElementById("promo").value || "None";
 
     const discordWebhook = "https://discord.com/api/webhooks/1334457000582582303/BF5ZT--YBu_bDc9kc7u1Q9y9ryU7MMNdmmeEVw7axkaf44aAyDRV5DElAY8VSw46Rgyr";
 
@@ -141,7 +160,7 @@ function sendPurchaseEmbed() {
         embeds: [
             {
                 title: "Purchase Log Detected",
-                description: `A new user has signed up for IceHosting\n\n**Discord username:** ${discord}\n**Their plan details:**\n  **RAM:** ${ram}GB\n  **Processor:** ${processor}\n  **First Name:** ${firstName}\n  **Last name:** ${lastName}\n**Platform**:${platform}\n**Email:**${email}\n**Hosting Type:**${htype}\n**Storage Amount:**${storage}\n**Storage Type:**${storage_type}\n **Discord bot programming language:**${bot_programming_lang}`,
+                description: `A new user has signed up for IceHosting\n\n**Discord username:** ${discord}\n**Their plan details:**\n  **RAM:** ${ram}GB\n  **Processor:** ${processor}\n  **First Name:** ${firstName}\n  **Last name:** ${lastName}\n**Platform**:${platform}\n**Email:**${email}\n**Hosting Type:**${htype}\n**Storage Amount:**${storage}\n**Storage Type:**${storage_type}\n **Discord bot programming language:**${bot_programming_lang}\n Promocode: ${promocode}`,
                 color: 1753560,
                 author: {
                     name: "IceHosting Signup System"
@@ -230,3 +249,28 @@ function navigateTo(url, waitForSeconds = false, delayTime = 25) {
         window.location.href = url;
     }
 }
+
+document.getElementById("details").addEventListener("submit", async function(event) {
+    event.preventDefault();
+    
+    const promoCode = document.getElementById("promo").value.trim();
+    if (!promoCode) {
+        this.submit();
+        return;
+    }
+    
+    try {
+        const response = await fetch("https://icehosting-usercreation-backend-production.up.railway.app/promo");
+        const promoData = await response.json();
+        
+        if (promoData[promoCode]) {
+            const discount = promoData[promoCode];
+            showPromoNotification(`You have successfully assigned a ${discount} off promo code!`);
+        } else {
+            alert("Invalid promo code!");
+        }
+    } catch (error) {
+        console.error("Error checking promo code:", error);
+        alert("Failed to verify promo code. Please try again.");
+    }
+});
