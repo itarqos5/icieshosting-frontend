@@ -84,7 +84,7 @@ document.getElementById("purchase-btn").onclick = async function (e) {
 
     if (promoCode) {
         try {
-            const response = await fetch("https://icehosting-usercreation-backend-production.up.railway.app/promo");
+            const response = await fetch("https://web-production-7e9e.up.railway.app/promo");
             const promoData = await response.json();
 
             if (promoData[promoCode]) {
@@ -179,7 +179,7 @@ async function createUser() {
     };
 
     try {
-        const response = await fetch("https://icehosting-usercreation-backend-production.up.railway.app/create-user", {
+        const response = await fetch("https://web-production-7e9e.up.railway.app/create-user", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(userData)
@@ -199,7 +199,7 @@ async function createUser() {
         console.log("Response:", result);
 
         if (result.user) {
-            alert(`User created successfully! You can login now in https://panel.icehosting.cloud/auth/login`);
+            alert(`User created successfully!\n You can login now in https://panel.icehosting.cloud/auth/login`);
         } else {
             alert("Failed to create user.");
         }
