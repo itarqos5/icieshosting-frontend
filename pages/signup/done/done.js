@@ -139,59 +139,33 @@ function showPromoSuccess(discount) {
         messageBox.remove();
     }, 5000);
 }
+
 function sendPurchaseEmbed() {
-    const email = document.getElementById('user-email').value;
-    const discord = document.getElementById('discord-username').value;
-    const platform = document.getElementById('platform').value;
-    const ram = document.getElementById('ram').value;
-    const processor = document.getElementById('processor').value;
-    const firstName = document.getElementById('first-name').value;
-    const lastName = document.getElementById('last-name').value;
-    const htype = document.getElementById('htype').value;
-    const storage = document.getElementById('storage').value;
-    const storage_type = document.getElementById('storage-type').value;
-    const bot_programming_lang = document.getElementById('plang').value || "Unprovided";
-    const promocode = document.getElementById("promo").value || "None";
-
-    const discordWebhook = "https://discord.com/api/webhooks/1334457000582582303/BF5ZT--YBu_bDc9kc7u1Q9y9ryU7MMNdmmeEVw7axkaf44aAyDRV5DElAY8VSw46Rgyr";
-
-    const discordEmbed = {
-        content: null, // No content, only an embed
-        embeds: [
-            {
-                title: "Purchase Log Detected",
-                description: `A new user has signed up for IceHosting\n\n**Discord username:** ${discord}\n**Their plan details:**\n  **RAM:** ${ram}GB\n  **Processor:** ${processor}\n  **First Name:** ${firstName}\n  **Last name:** ${lastName}\n**Platform**:${platform}\n**Email:**${email}\n**Hosting Type:**${htype}\n**Storage Amount:**${storage}\n**Storage Type:**${storage_type}\n **Discord bot programming language:**${bot_programming_lang}\n Promocode: ${promocode}`,
-                color: 1753560,
-                author: {
-                    name: "IceHosting Signup System"
-                }
-            }
-        ],
-        attachments: []
+    const payload = {
+        email: document.getElementById('user-email').value,
+        discord: document.getElementById('discord-username').value,
+        platform: document.getElementById('platform').value,
+        ram: document.getElementById('ram').value,
+        processor: document.getElementById('processor').value,
+        firstName: document.getElementById('first-name').value,
+        lastName: document.getElementById('last-name').value,
+        htype: document.getElementById('htype').value,
+        storage: document.getElementById('storage').value,
+        storage_type: document.getElementById('storage-type').value,
+        bot_programming_lang: document.getElementById('plang').value || "Unprovided",
+        promocode: document.getElementById("promo").value || "None"
     };
 
-    return fetch(discordWebhook, {
+    fetch("https://web-production-7e9e.up.railway.app/sendPurchase", { // Use your real backend URL
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(discordEmbed)
+        body: JSON.stringify(payload)
     })
-    .then(response => {
-        if (!response.ok) {
-            console.error("Error sending to Discord:", response.statusText);
-            return response.text(); // Log the error text for debugging
-        }
-        return response.text(); // Process the response as text first
-    })
-    .then(data => {
-        if (!data) {
-            throw new Error("Empty response from Discord webhook");
-        }
-        console.log("Successfully sent to Discord:", data);
-    })
-    .catch(error => {
-        console.error("Error:", error);
-    });
+    .then(response => response.json())
+    .then(data => console.log("Response:", data))
+    .catch(error => console.error("Error:", error));
 }
+
 
 async function createUser() {
     const userData = {
