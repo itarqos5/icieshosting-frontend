@@ -296,22 +296,6 @@ h1:hover, h2:hover, h3:hover {
     background: #3766D8;
 }
 
-/* Footer Styling */
-footer {
-    text-align: center;
-    padding: 20px;
-    background-color: #2C3E59;
-    margin-top: 50px;
-    border-top: 2px solid #4D7CFF;
-    animation: fadeIn 4s ease-in-out;
-}
-
-footer p {
-    margin: 0;
-    font-size: 1rem;
-    color: #FFD700;
-}
-
 @keyframes fall {
     0% { transform: translateY(-100px); opacity: 0; }
     100% { transform: translateY(100vh); opacity: 1; }
