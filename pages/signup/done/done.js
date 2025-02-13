@@ -1,20 +1,59 @@
 document.addEventListener("DOMContentLoaded", function () {
-    const ramSlider = document.getElementById("ram");
+    const ramInput = document.getElementById("ram");
     const ramValue = document.getElementById("ram-value");
+    const storageInput = document.getElementById("storage");
+    const htypeSelect = document.getElementById("htype");
     const platformSelect = document.getElementById("platform");
 
-    // Update RAM value based on slider input
-    ramSlider.oninput = function () {
-        let ramText = "RAM: " + ramSlider.value + "GB";
+    // Update RAM display
+    ramInput.addEventListener("input", function () {
+        ramValue.textContent = `RAM: ${ramInput.value}GB`;
+    });
+
+    // Lock RAM and storage based on hosting type
+    htypeSelect.addEventListener("change", function () {
+        const selectedType = htypeSelect.value;
+
+        switch (selectedType) {
+            case "Budget":
+                ramInput.value = 6;
+                ramInput.disabled = true;
+                storageInput.value = 20;
+                storageInput.disabled = true;
+                break;
+            case "Premium":
+                ramInput.value = 10;
+                ramInput.disabled = true;
+                storageInput.value = 30;
+                storageInput.disabled = true;
+                break;
+            case "Extreme":
+                ramInput.value = 16;
+                ramInput.disabled = true;
+                storageInput.value = 45;
+                storageInput.disabled = true;
+                break;
+            case "Custom":
+                ramInput.disabled = false;
+                storageInput.disabled = false;
+                break;
+        }
+        ramValue.textContent = `RAM: ${ramInput.value}GB`;
+    });
+
+    // Override RAM value based on slider input
+    ramInput.oninput = function () {
+        let ramText = "RAM: " + ramInput.value + "GB";
 
         // If the platform is VPS and RAM is above 32GB, set it to "Unlimited"
-        if (platformSelect.value === "VPS" && ramSlider.value > 63) {
+        if (platformSelect.value === "VPS" && ramInput.value > 63) {
             ramText = "RAM: Unlimited";
         }
 
         ramValue.textContent = ramText;
     };
 });
+
 
 document.addEventListener("DOMContentLoaded", function () {
     const platformSelect = document.getElementById("platform");

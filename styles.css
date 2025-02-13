@@ -1,26 +1,47 @@
 /* Global styling */
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Arial', sans-serif;
     margin: 0;
     padding: 0;
     background-color: #1A2B45; /* Dark blue background */
     color: white;
+    overflow-x: hidden;
 }
 
 /* Centered headings */
 h1, h2, h3 {
     text-align: center;
     color: white;
+    animation: fadeIn 2s ease-in-out;
+}
+
+h1 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+h2 {
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+h3 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 /* Main container */
 .container {
     max-width: 900px;
-    margin: 40px auto; /* Added margin to push content down */
+    margin: 40px auto;
     padding: 20px;
     background-color: #2C3E59; /* Darker background */
     border-radius: 10px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    animation: slideIn 1.5s ease-in-out;
 }
 
 /* Centered buttons */
@@ -39,13 +60,15 @@ button {
     font-size: 16px;
     border-radius: 5px;
     cursor: pointer;
-    transition: background 0.3s, transform 0.2s;
-    margin: 10px; /* Adds spacing between buttons */
+    transition: background 0.3s, transform 0.2s, box-shadow 0.3s;
+    margin: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
 }
 
 button:hover {
     background-color: #3766D8; /* Slightly darker blue */
     transform: scale(1.05);
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.3);
 }
 
 /* Plans section */
@@ -53,8 +76,9 @@ button:hover {
     display: flex;
     justify-content: center;
     gap: 40px;
-    margin-top: 80px; /* Adjusted spacing */
+    margin-top: 80px;
     flex-wrap: wrap;
+    animation: fadeIn 2.5s ease-in-out;
 }
 
 /* Plan boxes */
@@ -66,18 +90,37 @@ button:hover {
     text-align: center;
     background-color: #2C3E59;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.box:hover {
+    transform: translateY(-10px);
+    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.5);
+}
+
+.box h3 {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    color: #FFD700; /* Gold */
+}
+
+.box p {
+    font-size: 1.1rem;
+    line-height: 1.6;
 }
 
 /* Perks Section */
 .perks-section {
-    margin-top: 120px; /* Adjusted */
+    margin-top: 120px;
     text-align: center;
+    animation: fadeIn 3s ease-in-out;
 }
 
 .perks-section h2 {
     font-size: 32px;
     margin-bottom: 40px;
     color: #FFD700; /* Gold */
+    animation: glow 2s infinite alternate;
 }
 
 /* Perks boxes */
@@ -96,6 +139,23 @@ button:hover {
     text-align: center;
     background-color: #2C3E59;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.perk-box:hover {
+    transform: translateY(-10px);
+    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.5);
+}
+
+.perk-box h3 {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    color: #FFD700; /* Gold */
+}
+
+.perk-box p {
+    font-size: 1.1rem;
+    line-height: 1.6;
 }
 
 /* Centered perk buttons */
@@ -108,14 +168,46 @@ button:hover {
     font-size: 16px;
     cursor: pointer;
     text-align: center;
-    margin-top: 30px; /* Adjusted for spacing */
-    transition: background 0.3s, transform 0.2s;
+    margin-top: 30px;
+    transition: background 0.3s, transform 0.2s, box-shadow 0.3s;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
 }
 
 .perk-button:hover {
     background-color: #FFD700;
     color: #1A2B45;
     transform: scale(1.05);
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Keyframe Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateY(-50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes glow {
+    0% {
+        text-shadow: 0 0 5px #FFD700, 0 0 10px #FFD700, 0 0 20px #FFD700;
+    }
+    100% {
+        text-shadow: 0 0 10px #FFD700, 0 0 20px #FFD700, 0 0 40px #FFD700;
+    }
 }
 
 /* Responsive Design */
@@ -124,4 +216,119 @@ button:hover {
         flex-direction: column;
         align-items: center;
     }
+
+    .box, .perk-box {
+        width: 90%;
+        margin: 10px 0;
+    }
+
+    h1 {
+        font-size: 2.5rem;
+    }
+
+    h2 {
+        font-size: 2rem;
+    }
+
+    h3 {
+        font-size: 1.5rem;
+    }
 }
+
+/* Additional Animations */
+.container {
+    animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-20px);
+    }
+}
+
+/* Gradient Background */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, #1A2B45, #2C3E59, #4D7CFF);
+    z-index: -1;
+    opacity: 0.8;
+    animation: gradientShift 10s infinite alternate;
+}
+
+@keyframes gradientShift {
+    0% {
+        background-position: 0% 50%;
+    }
+    100% {
+        background-position: 100% 50%;
+    }
+}
+
+/* Hover Effects for Text */
+h1:hover, h2:hover, h3:hover {
+    color: #FFD700;
+    transition: color 0.3s ease-in-out;
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #1A2B45;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #4D7CFF;
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #3766D8;
+}
+
+/* Footer Styling */
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #2C3E59;
+    margin-top: 50px;
+    border-top: 2px solid #4D7CFF;
+    animation: fadeIn 4s ease-in-out;
+}
+
+footer p {
+    margin: 0;
+    font-size: 1rem;
+    color: #FFD700;
+}
+
+@keyframes fall {
+    0% { transform: translateY(-100px); opacity: 0; }
+    100% { transform: translateY(100vh); opacity: 1; }
+}
+
+.snowflake {
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    background: url('assets/snowflake.png') no-repeat center/contain;
+    animation: fall 5s linear infinite;
+    pointer-events: none;
+}
+
+.snowflake:nth-child(1) { left: 10%; animation-duration: 6s; }
+.snowflake:nth-child(2) { left: 30%; animation-duration: 7s; }
+.snowflake:nth-child(3) { left: 50%; animation-duration: 5s; }
+.snowflake:nth-child(4) { left: 70%; animation-duration: 6.5s; }
+.snowflake:nth-child(5) { left: 90%; animation-duration: 7.5s; }
+.snowflake:nth-child(6) { left: 20%; animation-duration: 8s; }

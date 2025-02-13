@@ -14,72 +14,72 @@
     <div class="container">
         <h1>Confirm Your Details</h1>
         <form id="details">
-        <div class="plan-selection">
-            <label>RAM:</label>
-            <input type="range" id="ram" min="1" max="64" step="1" value="1" required>
-            <span id="ram-value">RAM: 1GB</span><br><br>
+            <div class="plan-selection">
+                <label>RAM:</label>
+                <input type="range" id="ram" min="1" max="64" step="1" value="1" required>
+                <span id="ram-value">RAM: 1GB</span><br><br>
 
-            <label>Processor:</label>
-            <select id="processor" required>
-                <option value="AMD Epyc 7543">AMD Epyc 7543 (EU Region)</option>
-                <option value="RYZEN 9 7900">RYZEN 9 7900 (EU Region)</option>
-                <option value="Ryzen 7 3700x">Ryzen 7 3700x</option>
-                <option value="Ryzen 7 5700G">Ryzen 7 5700G</option>
-            </select><br><br>
+                <label>Processor:</label>
+                <select id="processor" required>
+                    <option value="AMD Epyc 7543">AMD Epyc 7543 (Region Transfer Support)</option>
+                    <option value="RYZEN 9 7900">RYZEN 9 7900 (Region Transfer Support)</option>
+                    <option value="Ryzen 7 3700x">Ryzen 7 3700x</option>
+                    <option value="Ryzen 7 5700G">Ryzen 7 5700G</option>
+                </select><br><br>
 
-            <label>Platform:</label>
-            <select id="platform" required>
-                <option value="VPS">VPS</option>
-                <option value="Minecraft">Minecraft</option>
-                <option value="CS-GO">CS-GO</option>
-                <option value="FiveM">FiveM</option>
-                <option value="Ark">Ark</option>
-                <option value="Rust">Rust</option>
-                <option value="Discord-Bot">Discord Bot</option>
-            </select><br><br>
+                <label>Platform:</label>
+                <select id="platform" required>
+                    <option value="VPS">VPS</option>
+                    <option value="Minecraft">Minecraft</option>
+                    <option value="CS-GO">CS-GO</option>
+                    <option value="FiveM">FiveM</option>
+                    <option value="Ark">Ark</option>
+                    <option value="Rust">Rust</option>
+                    <option value="Discord-Bot">Discord Bot</option>
+                </select><br><br>
 
-            <label id="plang-label" style="display: none;">Bot Programming Language:</label>
-            <select id="plang" style="display: none;">
-                <option value="python">Python</option>
-                <option value="javascript">JavaScript (Node.js)</option>
-                <option value="java">Java (JDA)</option>
-            </select><br><br>
+                <label id="plang-label" style="display: none;">Bot Programming Language:</label>
+                <select id="plang" style="display: none;">
+                    <option value="python">Python</option>
+                    <option value="javascript">JavaScript (Node.js)</option>
+                    <option value="java">Java (JDA)</option>
+                </select><br><br>
 
-            <label>Hosting Type:</label>
-            <select id="htype" required>
-                <option value="Budget">Budget Minecraft Hosting</option>
-                <option value="Premium">Premium Minecraft Hosting</option>
-                <option value="Extreme">Extreme Minecraft Hosting</option>
-            </select><br><br>
+                <label>Hosting Type:</label>
+                <select id="htype" required>
+                    <option value="Budget">Budget Minecraft Hosting</option>
+                    <option value="Premium">Premium Minecraft Hosting</option>
+                    <option value="Extreme">Extreme Minecraft Hosting</option>
+                    <option value="Custom">Custom Hosting</option>
+                </select><br><br>
 
-            <label>Email:</label>
-            <input type="email" id="user-email" placeholder="Email" required><br><br>
-            <label>Discord ID:</label>
-            <input type="text" id="discord-username" placeholder="Discord ID" required><br><br>
-            <label>Password:</label>
-            <input type="password" id="password" placeholder="Password" required><br><br>
-            <label>First name:</label>
-            <input type="text" id="first-name" placeholder="Your first name" required><br><br>
-            <label>Last name:</label>
-            <input type="text" id="last-name" placeholder="Your last name" required><br><br>
+                <label>Email:</label>
+                <input type="email" id="user-email" placeholder="Email" required><br><br>
+                <label>Discord ID:</label>
+                <input type="text" id="discord-username" placeholder="Discord ID" required><br><br>
+                <label>Password:</label>
+                <input type="password" id="password" placeholder="Password" required><br><br>
+                <label>First name:</label>
+                <input type="text" id="first-name" placeholder="Your first name" required><br><br>
+                <label>Last name:</label>
+                <input type="text" id="last-name" placeholder="Your last name" required><br><br>
 
-            <label>Storage:</label>
-            <input type="number" id="storage" placeholder="Enter storage amount" required><span> Storage Type:</span>
-            <select id="storage-type" required>
-                <option value="TB">TB</option>
-                <option value="MB">MB</option>
-                <option value="KB">KB</option>
-                <option value="GB">GB</option>
-            </select><br><br>
+                <label>Storage:</label>
+                <input type="number" id="storage" placeholder="Enter storage amount" required><span> Storage Type:</span>
+                <select id="storage-type" required>
+                    <option value="TB">TB</option>
+                    <option value="MB">GB</option>
+                    <option value="KB">MB</option>
+                    <option value="GB">KB</option>
+                </select><br><br>
 
-            <label>Promocode: (Optional)</label>
-            <input id="promo" placeholder="Enter coupon code here!">
+                <label>Promocode: (Optional)</label>
+                <input id="promo" placeholder="Enter coupon code here!">
 
-            <button type="submit" class="btn" id="purchase-btn">Submit</button>
+                <button type="submit" class="btn" id="purchase-btn">Submit</button>
+            </div>
         </form>
-        </div>
     </div>
-    <link rel="stylesheet" href="../../../footer.css">
     <footer class="footer">
         <p>&copy; 2025 IceHosting. All Rights Reserved.</p>
     </footer>
