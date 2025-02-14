@@ -308,6 +308,7 @@ h1:hover, h2:hover, h3:hover {
     background: url('assets/snowflake.png') no-repeat center/contain;
     animation: fall 5s linear infinite;
     pointer-events: none;
+    z-index: -1; /* Send snowflakes behind */
 }
 
 .snowflake:nth-child(1) { left: 10%; animation-duration: 6s; }
