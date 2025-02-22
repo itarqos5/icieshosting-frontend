@@ -308,22 +308,6 @@ h3 {
     animation: float 6s ease-in-out infinite;
 }
 
-/* Navigation Bar */
-.navbar {
-    background-color: #2C3E59;
-    padding: 15px 0;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-}
-
-.nav-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 20px;
-}
-
 .logo {
     font-size: 1.8rem;
     font-weight: bold;
@@ -331,10 +315,26 @@ h3 {
     text-decoration: none;
 }
 
+.nav-container {
+    max-width: 1200px; /* Remove or adjust this */
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+}
+
 .nav-links {
     list-style: none;
     display: flex;
-    gap: 20px;
+    justify-content: center; /* Center the links */
+    width: 100%; /* Take full width */
+    margin: 0; /* Remove default margin */
+    padding: 0; /* Remove default padding */
+}
+
+.nav-links li {
+    margin: 0 15px; /* Add space between list items */
 }
 
 .nav-links a {
