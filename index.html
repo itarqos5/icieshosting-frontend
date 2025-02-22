@@ -3,16 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IciesHosting Signup</title>
-    <link rel="stylesheet" href="styles.css">
-    <meta property="og:title" content="IceHosting">
+    <title>IciesHosting - The Best Hosting Provider</title>
+    <meta property="og:title" content="IciesHosting">
     <meta property="og:description" content="The best hosting provider ever!">
     <meta property="og:url" content="https://icehosting-signup.vercel.app/">
     <meta name="twitter:card" content="summary_large_image">
+    <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="footer.css">
     <script src="navigateTo.js"></script>
 </head>
 <body>
+    <!-- Snowflakes Animation -->
     <div class="snowflake"></div>
     <div class="snowflake"></div>
     <div class="snowflake"></div>
@@ -20,34 +21,50 @@
     <div class="snowflake"></div>
     <div class="snowflake"></div>
 
-    <footer class="footer">
-        <p>&copy; 2025 IciesHosting. All Rights Reserved.</p>
-    </footer>
-    <div class="container">
-        <h1>Welcome to Icies Hosting</h1>
-        <section>
-            <div class="center">
+    <!-- Hero Section -->
+    <header class="hero">
+        <div class="container">
+            <h1>Welcome to IciesHosting</h1>
+            <p>Reliable, Affordable, and Powerful Hosting Solutions</p>
+            <div class="cta-buttons">
                 <button onclick="window.location.href='pages/signup/index.html'">Sign Up</button>
                 <button onclick="window.location.href='https://panel.icehosting.cloud/auth/login'">Login</button>
-                <button onclick="window.location.href='pages/signup/done/index.html'">Order a server</button>
-            </div>
-        </section>
-
-        <div class="plans">
-            <div class="box">
-                <h2>Budget Hosting</h2>
-                <button onclick="navigateTo('./plans/index.html')">View Plans</button>
-            </div>
-            <div class="box">
-                <h2>Premium Hosting</h2>
-                <button onclick="navigateTo('./plans/index.html')">View Plans</button>
-            </div>
-            <div class="box">
-                <h2>Extreme Hosting</h2>
-                <button onclick="navigateTo('./plans/index.html')">View Plans</button>
+                <button onclick="window.location.href='pages/signup/done/index.html'">Order a Server</button>
             </div>
         </div>
-    </div>
+    </header>
+
+    <!-- Features Section -->
+    <section class="features">
+        <div class="container">
+            <h2>Why Choose IciesHosting?</h2>
+            <div class="feature-grid">
+                <div class="feature">
+                    <h3>Budget Hosting</h3>
+                    <p>Affordable plans for small projects and startups.</p>
+                    <button onclick="navigateTo('./plans/index.html')">View Plans</button>
+                </div>
+                <div class="feature">
+                    <h3>Premium Hosting</h3>
+                    <p>High-performance hosting for growing businesses.</p>
+                    <button onclick="navigateTo('./plans/index.html')">View Plans</button>
+                </div>
+                <div class="feature">
+                    <h3>Extreme Hosting</h3>
+                    <p>Enterprise-grade hosting for demanding applications.</p>
+                    <button onclick="navigateTo('./plans/index.html')">View Plans</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 IciesHosting. All Rights Reserved.</p>
+        </div>
+    </footer>
+
     <script src="pages/signup/done/done.js"></script>
 </body>
 </html>
