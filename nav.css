@@ -1,0 +1,33 @@
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-links li {
+    margin: 0 15px;
+}
+
+/* Add this to keep the logo and nav links spaced correctly */
+.nav-container > *:not(.nav-links) {
+    flex-shrink: 0; /* Prevent logo from shrinking */
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.nav-links a:hover {
+    color: #4D7CFF;
+}
