@@ -44,44 +44,6 @@ h3 {
     animation: slideIn 1.5s ease-in-out;
 }
 
-/* Hero Section */
-.hero {
-    background: linear-gradient(135deg, #2C2F33, #1A2B45);
-    color: #fff;
-    padding: 150px 0; /* Increased padding */
-    text-align: center;
-    border-radius: 10px;
-    margin-bottom: 40px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-    position: relative; /* Added relative positioning */
-    overflow: hidden; /* prevents the logo from overflowing */
-}
-.hero::before{
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-image: url('assets/logo.png');
-    background-size: contain;
-    background-repeat: no-repeat;
-    width: 80%; /* Adjust as needed */
-    height: 80%; /* Adjust as needed */
-    opacity: 0.1; /* Adjust opacity */
-    z-index: 0; /* Place behind the content */
-    pointer-events: none;
-}
-
-.hero-content {
-    position: relative; /*ensure the text is on top of the background logo*/
-    z-index: 1;
-}
-
-.hero h1 {
-    font-size: 3.5rem;
-    margin-bottom: 20px;
-}
-
 .cta-buttons {
     display: flex;
     justify-content: center;
