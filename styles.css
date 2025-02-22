@@ -35,7 +35,7 @@ h3 {
 
 /* Main container */
 .container {
-    max-width: 900px;
+    max-width: 1200px;
     margin: 40px auto;
     padding: 20px;
     background-color: #2C3E59; /* Darker background */
@@ -44,14 +44,33 @@ h3 {
     animation: slideIn 1.5s ease-in-out;
 }
 
-/* Centered buttons */
-.center {
+/* Hero Section */
+.hero {
+    background-color: #2C2F33;
+    color: #fff;
+    padding: 100px 0;
     text-align: center;
-    margin-bottom: 50px;
+    border-radius: 10px;
+    margin-bottom: 40px;
 }
 
-/* Buttons */
-button {
+.hero h1 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+}
+
+.hero p {
+    font-size: 1.2rem;
+    margin-bottom: 40px;
+}
+
+.cta-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.cta-buttons button {
     background-color: #4D7CFF; /* Light blue */
     border: none;
     color: white;
@@ -61,14 +80,83 @@ button {
     border-radius: 5px;
     cursor: pointer;
     transition: background 0.3s, transform 0.2s, box-shadow 0.3s;
-    margin: 10px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
 }
 
-button:hover {
+.cta-buttons button:hover {
     background-color: #3766D8; /* Slightly darker blue */
     transform: scale(1.05);
     box-shadow: 0 6px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Features Section */
+.features {
+    padding: 80px 0;
+    background-color: #2C3E59;
+    text-align: center;
+    border-radius: 10px;
+    margin-bottom: 40px;
+}
+
+.features h2 {
+    font-size: 2.5rem;
+    margin-bottom: 40px;
+}
+
+.feature-grid {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.feature-card {
+    background-color: #1A2B45;
+    border: 2px solid #4D7CFF;
+    border-radius: 10px;
+    padding: 20px;
+    width: 30%;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.feature-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+}
+
+.feature-card h3 {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    color: #FFD700; /* Gold */
+}
+
+.feature-card p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+}
+
+.feature-card button {
+    background-color: #4D7CFF;
+    color: white;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.2s, box-shadow 0.3s;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+.feature-card button:hover {
+    background-color: #3766D8;
+    transform: scale(1.05);
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Centered buttons */
+.center {
+    text-align: center;
+    margin-bottom: 50px;
 }
 
 /* Plans section */
@@ -212,12 +300,12 @@ button:hover {
 
 /* Responsive Design */
 @media (max-width: 768px) {
-    .plans {
+    .plans, .feature-grid, .perks-container {
         flex-direction: column;
         align-items: center;
     }
 
-    .box, .perk-box {
+    .box, .perk-box, .feature-card {
         width: 90%;
         margin: 10px 0;
     }
@@ -296,6 +384,7 @@ h1:hover, h2:hover, h3:hover {
     background: #3766D8;
 }
 
+/* Snowflakes Animation */
 @keyframes fall {
     0% { transform: translateY(-100px); opacity: 0; }
     100% { transform: translateY(100vh); opacity: 1; }
