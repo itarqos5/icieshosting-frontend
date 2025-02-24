@@ -1,8 +1,8 @@
 .nav-container {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
-    padding: 0 20px;
+    padding: 15px 20px; /* added padding to the top and bottom*/
 }
 
 .nav-links {
@@ -11,23 +11,26 @@
     justify-content: center;
     margin: 0;
     padding: 0;
+    width: 100%; /* Add this to make them take up full width */
 }
 
 .nav-links li {
-    margin: 0 15px;
-}
-
-/* Add this to keep the logo and nav links spaced correctly */
-.nav-container > *:not(.nav-links) {
-    flex-shrink: 0; /* Prevent logo from shrinking */
+    margin: 0 20px; /* increased margin between li elements */
 }
 
 .nav-links a {
     color: white;
     text-decoration: none;
     transition: color 0.3s;
+    font-size: 1.2rem;
+    padding: 10px 15px; /* added padding to the a elements */
 }
 
 .nav-links a:hover {
     color: #4D7CFF;
+}
+
+/* Add this to keep the logo and nav links spaced correctly */
+.nav-container > *:not(.nav-links) {
+    flex-shrink: 0; /* Prevent logo from shrinking */
 }
