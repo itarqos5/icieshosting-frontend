@@ -1,8 +1,9 @@
 {
-    "rewrites": [
+    "redirects": [
       {
         "source": "/",
-        "destination": "https://icieshosting.shop/discord"
+        "destination": "https://icieshosting.shop/discord",
+        "permanent": true
       }
     ]
   }
