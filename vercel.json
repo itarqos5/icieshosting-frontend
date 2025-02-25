@@ -1,0 +1,30 @@
+{
+    "redirects": [
+      {
+        "source": "/discord",
+        "destination": "https://icieshosting.shop/discord",
+        "permanent": true
+      },
+      {
+        "source": "/discord/",
+        "destination": "https://icieshosting.shop/discord",
+        "permanent": true
+      },
+      {
+        "source": "/discord(.*)",
+        "destination": "https://icieshosting.shop/discord",
+        "permanent": true
+      },
+      {
+          "source": "/(.*)",
+          "destination": "/$1"
+      }
+    ],
+    "rewrites": [
+      {
+          "source": "/discord",
+          "destination": "/discord"
+      }
+  
+    ]
+  }
