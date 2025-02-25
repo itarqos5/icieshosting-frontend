@@ -4,6 +4,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const storageInput = document.getElementById("storage");
     const htypeSelect = document.getElementById("htype");
     const platformSelect = document.getElementById("platform");
+    const storageType = document.getElementById("storage-type");
 
     // Update RAM display
     ramInput.addEventListener("input", function () {
@@ -20,22 +21,29 @@ document.addEventListener("DOMContentLoaded", function () {
                 ramInput.disabled = true;
                 storageInput.value = 20;
                 storageInput.disabled = true;
+                storageType.value = "GB";
+                storageType.disabled = true;
                 break;
             case "Premium":
                 ramInput.value = 10;
                 ramInput.disabled = true;
                 storageInput.value = 30;
                 storageInput.disabled = true;
+                storageType.value = "GB";
+                storageType.disabled = true;
                 break;
             case "Extreme":
                 ramInput.value = 16;
                 ramInput.disabled = true;
                 storageInput.value = 45;
                 storageInput.disabled = true;
+                storageType.value = "GB";
+                storageType.disabled = true;
                 break;
             case "Custom":
                 ramInput.disabled = false;
                 storageInput.disabled = false;
+                storageType.disabled = false;
                 break;
         }
         ramValue.textContent = `RAM: ${ramInput.value}GB`;
@@ -46,7 +54,7 @@ document.addEventListener("DOMContentLoaded", function () {
         let ramText = "RAM: " + ramInput.value + "GB";
 
         // If the platform is VPS and RAM is above 32GB, set it to "Unlimited"
-        if (platformSelect.value === "VPS" && ramInput.value > 63) {
+        if (platformSelect.value === "VPS" && ramInput.value > 999) {
             ramText = "RAM: Unlimited";
         }
 

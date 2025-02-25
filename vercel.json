@@ -2,6 +2,7 @@
     "redirects": [
       {
         "source": "/",
+        "has": [{ "type": "host", "value": "discord.icieshosting.shop" }],
         "destination": "https://icieshosting.shop/discord",
         "permanent": true
       }
