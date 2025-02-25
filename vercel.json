@@ -1,8 +1,8 @@
 {
-    "routes": [
+    "rewrites": [
       {
-        "src": "^/(.*)$",
-        "dest": "https://icieshosting.shop/discord"
+        "source": "/(.*)",
+        "destination": "/discord"
       }
     ]
   }
